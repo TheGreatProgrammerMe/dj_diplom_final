@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% load static %}
+
+{% block title %}Выберите действие{% endblock %}
+{% block content %}
+    {% for i in 5|times %}
+      <br>
+    {% endfor %}
+  {% if is_guest %}
+    <h3>Пожалуйста войдите в аккаунт</h3>
+  {% else %}
+  <div class="row">
+    <div class="col-lg-6 col-md-9 col-sm-12 order-md-2 mb-4">
+      <h1 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Ваша корзина</span>
+      </h1>
+      <ul class="list-group mb-3">
+      {% if no_product%}
+        <br>
+        <h3>Вы ничего не заказывали</h3>
+      {% else %}
+        {% for i in obj_count_int|times %}
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h2 class="my-0">{{ objects|obj_cart_name:i }}</h2>
+            </div>
+            <span class="text-muted">{{ objects|obj_cart_count:i }}</span>
+          </li> 
+        <br>
+        <br>
+        {% endfor %}
+
+        <form class="card p-2" action="/sucess_payed/">
+          <button type="submit" class="btn btn-secondary">Заказать</button>
+        </form>
+      </div>
+    </div>
+  {% endif %}
+  {% endif %}
+
+</div>
+
+{% endblock %}

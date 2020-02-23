@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% load static %}
+
+{% block title %}Выберите действие{% endblock %}
+{% block content %}
+    {% for i in 5|times %}
+      <br>
+    {% endfor %}
+        <div class="header"></div>
+        <h2>Авторизация</h2>
+        <br>
+		{{ error }}
+		<br>
+		<form action = '' method="POST">
+			{% csrf_token %}
+				{{ authorisation_form.as_p }}
+				<br>
+				<input type="submit" value="Отправить"/>
+		</form>
+</div>
+{% endblock %}

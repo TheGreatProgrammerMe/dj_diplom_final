@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% load static %}
+
+{% block title %}Оплата{% endblock %}
+{% block content %}
+    {% for i in 5|times %}
+      <br>
+    {% endfor %}
+<div class="margin-left">
+    {% if is_guest %}
+      <span style="display: inline;">Вы не зарегистрированы</span>
+    {% else %}
+      <span style="display: inline;">Вы успешно оплатили покупку!</span>
+      <a href="/">На главную!</a>
+    {% endif %}
+</div>
+{% endblock %}

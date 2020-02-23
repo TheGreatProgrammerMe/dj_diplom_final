@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% load static %}
+
+{% block title %}Выберите действие{% endblock %}
+{% block content %}
+    {% for i in 5|times %}
+      <br>
+    {% endfor %}
+		<div class="header"></div>
+			Привет, <b>{{ acc }}</b>.<br>
+			{% if is_guest %}
+				Пожалуйста, <a href="/signup">зарегистрируйся</a> или <a href="/login">авторизуйся</a>!
+			{% else %}
+				<a href="/signup">Зарегистрировать нового пользователя</a>
+				<br>
+				<a href="/login">Авторизоваться под другим пользователем</a>
+				<br>
+				<a href="/">На главную!</a>
+				<br>
+				<a href="/logout">Выйти</a>
+			{% endif %}
+	</div>
+{% endblock %}

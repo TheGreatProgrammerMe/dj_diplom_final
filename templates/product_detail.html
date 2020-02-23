@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% load static %}
+
+{% block title %}Выберите действие{% endblock %}
+{% block content %}
+    {% for i in 5|times %}
+      <br>
+    {% endfor %}
+<div class="margin-left">
+    <h2>Товар {{ product.name }}</h2>
+    <img class="card-img-top" src="{{ MEDIA_URL }}{{ product.image.url }}" alt="" width="75" height="300">
+    <h1>Цена: {{ product.price }} </h1>
+    <h1>Описание: {{ product.description }} </h1>
+    <form class="card p-2" action="{% url 'product_detail' product.slug %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-secondary">Заказать</button>
+    </form>
+    {% if is_guest %}
+      <span style="display: inline;">Пожалуйста зарегистрируйтесь для покупки!</span>
+    {% endif %}
+</div>
+{% endblock %}
